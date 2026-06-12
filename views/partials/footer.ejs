@@ -1,4 +1,19 @@
 
+    <script>
+        const toggle = document.getElementById('menuToggle');
+        const nav = document.querySelector('.left-nav');
+        const overlay = document.getElementById('navOverlay');
+
+        toggle?.addEventListener('click', () => {
+            nav.classList.toggle('open');
+            overlay.classList.toggle('visible');
+        });
+
+        overlay?.addEventListener('click', () => {
+            nav.classList.remove('open');
+            overlay.classList.remove('visible');
+        });
+    </script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>lucide.createIcons();</script>
 

@@ -440,3 +440,92 @@ input[name="tags"] {
     color: inherit;
 }
 
+/* =====================
+   Mobile Responsiveness
+   ===================== */
+
+/* Hamburger button — hidden on desktop */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--stack-sm);
+    color: var(--on-surface);
+}
+
+@media (max-width: 768px) {
+
+    /* Show hamburger */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Turn the fixed sidebar into a slide-in drawer */
+    .left-nav {
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        z-index: 100;
+        width: 240px; /* keep same width, just hidden off-screen */
+    }
+
+    /* Class toggled by JS to open the drawer */
+    .left-nav.open {
+        transform: translateX(0);
+    }
+
+    /* Dim overlay behind open nav */
+    .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.35);
+        z-index: 99;
+    }
+
+    .nav-overlay.visible {
+        display: block;
+    }
+
+    /* Remove the left offset — content fills full width */
+    .main-content {
+        margin-left: 0;
+        padding: var(--stack-md);
+    }
+
+    /* Topbar: show hamburger on the left */
+    .topbar {
+        position: sticky;
+        top: 0;
+        background-color: var(--surface);
+        z-index: 10;
+    }
+
+    /* Post/work cards: full width on mobile */
+    .post-card,
+    .work-card,
+    #post-form,
+    .post-detail {
+        max-width: 100%;
+    }
+
+    /* Work card: stack vertically instead of side-by-side */
+    .work-card {
+        flex-direction: column;
+    }
+
+    /* Shrink the big post detail title */
+    .post-detail-title {
+        font-size: 1.75rem;
+    }
+
+    /* Shrink the write-blog title input */
+    input[name="title"] {
+        font-size: 1.5rem;
+    }
+
+    /* Auth card: tighter padding */
+    .auth-card {
+        padding: var(--stack-lg) var(--stack-md);
+    }
+}
