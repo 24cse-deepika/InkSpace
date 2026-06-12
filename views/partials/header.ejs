@@ -19,7 +19,9 @@
             </div>
         </div>
         <div class="user-profile">
-            <div class="user-profile-link"><i data-lucide="user"></i> User</div>
+            <a href="/welcome" class="user-profile-link-wrapper">
+                <div class="user-profile-link"><i data-lucide="user"></i> <%= typeof username !== 'undefined' && username ? username : 'User' %></div>
+            </a>
         </div>
     </aside>
 

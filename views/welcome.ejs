@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InkSpace</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body class="auth-body">
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <h1 class="auth-title">Welcome to InkSpace</h1>
+            <p class="auth-subtitle">Tell us your name to get started.</p>
+
+            <form action="/welcome" method="POST" class="auth-form">
+                <input type="text" name="username" placeholder="Enter your name..." value="<%= username || '' %>" required autofocus>
+                <button type="submit" class="btn">Continue</button>
+            </form>
+
+            <p class="auth-note">This is a placeholder — login & authentication coming soon.</p>
+        </div>
+    </div>
+
+<%- include('partials/footer') %>
