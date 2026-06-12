@@ -50,6 +50,12 @@ app.get("/my-work", (req, res) => {
     res.render("my-work.ejs", { posts: posts });
 });
 
+app.post("/delete/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    posts = posts.filter(p => p.id !== id);
+    res.redirect("/my-work");
+});
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
