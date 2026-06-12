@@ -40,15 +40,20 @@ app.post("/write-blog", (req, res) => {
     res.redirect("/");
 });
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-});
-
 app.get("/post/:id", (req, res) => {
     const post = posts.find(p => p.id === parseInt(req.params.id));
     if(!post) return res.redirect("/");
     res.render("post.ejs", { post: post });
 });
+
+app.get("/my-work", (req, res) => {
+    res.render("my-work.ejs", { posts: posts });
+});
+
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
+
 
 let posts = [
     {

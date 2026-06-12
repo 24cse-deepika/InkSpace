@@ -1,0 +1,73 @@
+<%- include('partials/header') %>
+
+<div class="main-content">
+    <div class="topbar">
+        <div>
+            <h2>My Work</h2>
+            <p>Manage your published insights and creative drafts.</p>
+        </div>
+        <a href="/write-blog"><button class="btn">+ New Post</button></a>
+    </div>
+
+    <!-- Published Section -->
+    <div class="work-section">
+        <h3 class="title-section publish-post-title"><i data-lucide="circle-check-big"></i> Published</h3>
+        <% posts.filter(p => p.status === "published").forEach(post => { %>
+            <div class="work-card">
+                <!-- title, date, edit button, delete button -->
+                 <div class="info">
+                     <span class="work-tag work-tag-published"><%= post.tags[0] || 'Uncategorized' %></span>
+                     <h4 class="publish-post-title"><%= post.title %></h4>
+                     <span><%= post.date %></span>
+                     <p><%= post.content.substring(0, 100) + '...' %></p>
+                 </div>
+
+                 <div class="icons">
+                    <a href="/edit/<%= post.id %>">
+                        <i data-lucide="pencil"></i>
+                    </a>
+
+                    <form action="/delete/<%= post.id %>" method="POST">
+                        <button type="submit" class="icon-btn">
+                            <i data-lucide="trash-2"></i>
+                        </button>
+                    </form>
+
+                 </div>
+            </div>
+        <% }) %>
+    </div>
+
+    <!-- Drafts Section -->
+    <div class="work-section">
+        <h3 class="title-section draft-post-title"><i data-lucide="circle-ellipsis"></i> Drafts</h3>
+        <% posts.filter(p => p.status === "draft").forEach(post => { %>
+            <div class="work-card">
+                <!-- title, date, edit button, delete button -->
+                <div class="info">
+                    <span class="work-tag work-tag-draft"><%= post.tags[0] || 'Uncategorized' %></span>
+                    <h4 class="draft-post-title"><%= post.title %></h4>
+                    <span><%= post.date %></span>
+                    <p><%= post.content.substring(0, 100) + '...' %></p>
+                </div>
+
+                <div class="icons">
+                    <a href="/edit/<%= post.id %>">
+                        <i data-lucide="pencil"></i>
+                    </a>
+
+                    <div class="delete">
+                        <form action="/delete/<%= post.id %>" method="POST">
+                            <button type="submit" class="icon-btn">
+                                <i data-lucide="trash-2"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

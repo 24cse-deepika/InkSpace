@@ -9,6 +9,7 @@
     --on-surface: #191c1d;
     --on-surface-variant: #464554;
     --outline: #e5e7eb;
+    --tertiary: #904900;
     --error: #ba1a1a;
 
     /* Typography */
@@ -171,7 +172,7 @@ a {
     gap: var(--stack-md);
 }
 
-button {
+.btn {
     background-color: var(--primary);
     color: var(--on-primary);
     border: none;
@@ -282,4 +283,88 @@ input[name="tags"] {
     font-size: 0.875rem;
     color: var(--on-surface-variant);
     align-self: center;
+}
+
+.work-card {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--surface);
+    border: 1px solid var(--outline);
+    border-radius: var(--radius-md);
+    padding: var(--stack-md);
+    margin-top: var(--stack-lg);
+    margin-bottom: var(--stack-lg);
+    gap: var(--stack-sm); /* doesn't work, need to use flexbox */
+    max-width: var(--container-max);
+}
+
+.icons {
+    display: flex;
+    gap: var(--stack-md);
+    margin-top: var(--stack-md);
+}
+
+.title-section {
+    display: flex;
+    align-items: center;
+    gap: var(--stack-sm);
+    padding: var(--stack-sm) var(--stack-md);
+}
+
+.icons i {
+    cursor: pointer;
+    color: var(--on-surface-variant);
+}
+
+.delete i:hover {
+    color: var(--error);
+}
+
+.edit i:hover {
+    color: var(--primary);
+}
+
+.work-section {
+    margin-top: var(--stack-lg);
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: var(--on-surface-variant);
+}
+
+.icon-btn:hover {
+    color: var(--error);
+}
+
+.work-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--stack-sm);
+    display: block;
+}
+
+.work-tag-published {
+    color: var(--primary);
+}
+
+.work-tag-draft {
+    color: #904900;
+}
+
+.publish-post-title {
+    font-family: var(--font-serif);
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+.draft-post-title {
+    font-family: var(--font-serif);
+    color: var(--tertiary);
+    font-size: 1.5rem;
 }
