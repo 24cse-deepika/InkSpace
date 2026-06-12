@@ -4,20 +4,25 @@
         <h2>Recent Posts</h2>
 
         <% posts.forEach(post => { %>
-        <div class="post-card">
-            <div class="tags">
-                <% post.tags.forEach(tag => { %>
-                    <span class="tag"><%= tag %></span>
-                <% }) %>
-            </div>
-            <h3 class="post-title"><%= post.title %></h3>
-            <p><%= post.content %></p>
-            <div class="post-meta">
-                <span><%= post.author %></span>
-                <span>· <%= post.date %></span>
-            </div>
-        </div>
-    <% }) %>
+            <% if(post.status === "published") { %>
+                <a href="/post/<%= post.id %>" class="post-link">
+                <div class="post-card">
+                    <div class="tags">
+                        <% post.tags.forEach(tag => { %>
+                            <span class="tag"><%= tag %></span>
+                        <% }) %>
+                    </div>
+                    <h3 class="post-title"><%= post.title %></h3>
+                    <p><%= post.content.substring(0, 150) %>...</p>
+                    <div class="post-meta">
+                        <span><%= post.author %></span>
+                        <span>· <%= post.date %></span>
+                    </div>
+                </div>
+                </a>
+            <% } %>
+        <% }) %>
+
     </div>
 
 <%- include('partials/footer') %>

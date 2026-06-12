@@ -9,6 +9,7 @@ const app = express();
 const port = 3000;
 
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
     res.render("index.ejs", { posts: posts });
@@ -18,15 +19,42 @@ app.get("/write-blog", (req, res) => {
     res.render("write-blog.ejs");
 });
 
+app.post("/write-blog", (req, res) => {
+    const { title, content, tags, status } = req.body;
+
+    if(!title || title.trim() === "") {
+        return res.redirect("/write-blog");
+    }
+    
+    const newPost = {
+        id: posts.length + 1,
+        title: title,
+        content: content,
+        tags: tags ? tags.split(",").map(tag => tag.trim()) : [],
+        author: "Deepika",
+        date: new Date().toISOString().split("T")[0],
+        status: status
+    };
+    
+    posts.push(newPost);
+    res.redirect("/");
+});
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
+});
+
+app.get("/post/:id", (req, res) => {
+    const post = posts.find(p => p.id === parseInt(req.params.id));
+    if(!post) return res.redirect("/");
+    res.render("post.ejs", { post: post });
 });
 
 let posts = [
     {
         id: 1,
         title: "My First Hackathon",
-        content: "It was chaos. Beautiful chaos.",
+        content: "It was chaos. Beautiful chaos. I learned so much and met amazing people. Can't wait for the next one! The experience was unforgettable, and I can't wait to do it again. The energy, the creativity, and the camaraderie were incredible. I left with new skills, new friends, and a renewed passion for coding. Hackathons are truly a unique experience that every developer should try at least once.",
         tags: ["Hackathon", "Experience"],
         author: "Deepika",
         date: "2026-06-12",

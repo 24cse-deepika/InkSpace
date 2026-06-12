@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+
+<div class="main-content">
+    <div class="post-detail">
+        <h1 class="post-detail-title"><%= post.title %></h1>
+        <div class="tags-post">
+            <span class="topics-label">Topics :</span>
+            <% post.tags.forEach(tag => { %>
+                <span class="tag"><%= tag %></span>
+            <% }) %>
+        </div>
+        <div class="post-detail-meta">
+            <span><%= post.author %></span>
+            <span>· <%= post.date %></span>
+        </div>
+        <div class="post-detail-content">
+            <%= post.content %>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
