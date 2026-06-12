@@ -1,4 +1,54 @@
 <%- include('partials/header') %>
 
+<div class="main-content">
+    <h2>Recent Posts</h2>
+
+    <!-- For now : the hardcoded posts, later : the dynamic posts from the database -->
+    <!-- Will make this dynamic in the future, for now just a placeholder -->
+    <div class="post-card">
+        <div class="heading-title-tags">
+            <div class="tags">
+                <span class="tag">Tag1</span>
+                <span class="tag">Tag2</span>
+            </div>
+            <h3 class="post-title">Post Title 1</h3>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien eget nunc efficitur commodo.</p>
+        <div class="post-meta">
+            <span>John Doe</span>
+            <span>· 2026-06-12</span>
+        </div>
+    </div>
+
+    <div class="post-card">
+        <div class="heading-title-tags">
+            <div class="tags">
+                <span class="tag">Tag1</span>
+                <span class="tag">Tag2</span>
+                <span class="tag">Tag3</span>
+            </div>
+            <h3 class="post-title">Post Title 2 : A long title for demonstration purposes</h3>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien eget nunc efficitur commodo.</p>
+        <div class="post-meta">
+            <span>Jane Smith</span>
+            <span>· 2026-06-13</span>
+        </div>
+    </div>
+
+    <div class="post-card">
+        <div class="heading-title-tags">
+            <div class="tags">
+                <!-- Tags will be dynamically inserted here later, for now, assume this post has no tags -->
+            </div>
+            <h3 class="post-title">Post Title 3</h3>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien eget nunc efficitur commodo.</p>
+        <div class="post-meta">
+            <span>Alice Johnson</span>
+            <span>· 2026-06-14</span>
+        </div>
+    </div>
+</div>
 
 <%- include('partials/footer') %>

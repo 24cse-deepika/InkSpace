@@ -89,8 +89,69 @@ a {
     color: var(--primary);
 }
 
-.user-profile {
+.user-profile-link {
+    display: flex;
+    align-items: center;
+    gap: var(--stack-sm);
+    padding: var(--stack-sm) var(--stack-md);
     border-top: 1px solid var(--outline);
     padding-top: var(--stack-lg);
 }
 
+.nav-link:hover {
+    background-color: var(--background);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+.post-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--surface);
+    border: 1px solid var(--outline);
+    border-radius: var(--radius-md);
+    padding: var(--stack-md);
+    margin-top: var(--stack-lg);
+    margin-bottom: var(--stack-lg);
+    gap: var(--stack-sm); /* doesn't work, need to use flexbox */
+    max-width: var(--container-max);
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    gap: var(--stack-sm);
+    margin-bottom: var(--stack-sm);
+}
+
+.tag {
+    background-color: #e8e8fd;
+    color: var(--primary);
+    border: none;
+    padding: var(--stack-sm) var(--stack-md);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-family: var(--font-sans);
+    font-weight: 600;
+}
+
+.post-title {
+    font-family: var(--font-serif);
+    color: var(--on-surface);
+    font-size: 1.5rem;
+}
+
+.post-meta {
+    display: flex;
+    gap: var(--stack-sm);
+    color: var(--on-surface-variant);
+    font-size: 0.875rem;
+    margin-top: var(--stack-sm);
+}
+
+@media (max-width: 900px) {
+   /* let's skip the tags on smaller screens */
+    .tags {
+         display: none;
+    }
+}
