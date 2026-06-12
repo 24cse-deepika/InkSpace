@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+
+<!-- a top bar for each page separately -->
+<div class="main-content">
+    <div class="topbar">
+        <h2>Write a Post</h2>
+        <div class="topbar-actions">
+            <button type="submit" form="post-form" name="status" value="draft">Save as Draft</button>
+            <button type="submit" form="post-form" name="status" value="published">Publish</button>
+        </div>
+    </div>
+    
+    <!-- we use a form for submitting new blog posts -->
+    <form id="post-form" action="/write-blog" method="POST">
+        <input type="text" name="title" placeholder="Enter post title...">
+        <input type="text" name="tags" placeholder="Add tags, comma separated">
+        <textarea name="content" placeholder="Write your heart desires..."></textarea>
+    </form>
+</div>
+
+<%- include('partials/footer') %>
