@@ -56,6 +56,26 @@ app.post("/delete/:id", (req, res) => {
     res.redirect("/my-work");
 });
 
+app.get("/edit/:id", (req, res) => {
+    const post = posts.find(p => p.id === parseInt(req.params.id));
+    if(!post) return res.redirect("/my-work");
+    res.render("write-blog.ejs", { post: post });
+});
+
+app.post("/edit/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    const { title, content, tags, status } = req.body;
+    const post = posts.find(p => p.id === id);
+    if(!post) return res.redirect("/my-work");
+    
+    post.title = title;
+    post.content = content;
+    post.tags = tags ? tags.split(",").map(t => t.trim()) : [];
+    post.status = status;
+    
+    res.redirect("/my-work");
+});
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

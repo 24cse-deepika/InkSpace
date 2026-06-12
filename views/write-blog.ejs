@@ -11,10 +11,10 @@
     </div>
     
     <!-- we use a form for submitting new blog posts -->
-    <form id="post-form" action="/write-blog" method="POST">
-        <input type="text" name="title" placeholder="Enter post title...">
-        <input type="text" name="tags" placeholder="Add tags, comma separated">
-        <textarea name="content" placeholder="Write your heart desires..."></textarea>
+    <form id="post-form" action="<%= typeof post !== 'undefined' ? '/edit/' + post.id : '/write-blog' %>" method="POST">
+        <input type="text" name="title" placeholder="Enter post title..." value="<%= typeof post !== 'undefined' ? post.title : '' %>">
+        <input type="text" name="tags" placeholder="Add tags, comma separated" value="<%= typeof post !== 'undefined' ? post.tags.join(', ') : '' %>">
+        <textarea name="content" placeholder="Write your heart desires..."><%= typeof post !== 'undefined' ? post.content : '' %></textarea>
     </form>
 </div>
 
