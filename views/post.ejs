@@ -2,6 +2,9 @@
 
 <div class="main-content">
     <div class="post-detail">
+        <% if (post.bannerUrl) { %>
+            <img src="<%= post.bannerUrl %>" alt="Post Banner" class="post-banner">
+        <% } %>
         <h1 class="post-detail-title"><%= post.title %></h1>
         <div class="tags-post">
             <span class="topics-label">Topics :</span>

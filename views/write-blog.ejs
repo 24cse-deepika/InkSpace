@@ -5,17 +5,25 @@
     <div class="topbar">
         <h2>Write a Post</h2>
         <div class="topbar-actions">
-            <button type="submit" form="post-form" name="status" value="draft" class="btn">Save as Draft</button>
+            <button type="button" class="btn" id="bannerBtn" 
+                data-post-id="<%= typeof post !== 'undefined' ? post.id : '' %>">
+                Create Banner
+            </button>
+            <button type="submit" form="post-form" name="status" value="draft" class="btn" id="draftBtn">Save as Draft</button>
             <button type="submit" form="post-form" name="status" value="published" class="btn">Publish</button>
         </div>
     </div>
     
     <!-- we use a form for submitting new blog posts -->
     <form id="post-form" action="<%= typeof post !== 'undefined' ? '/edit/' + post.id : '/write-blog' %>" method="POST">
+        <img id="post-banner-preview" alt="Post Banner Preview" >
         <input type="text" name="title" placeholder="Enter post title..." value="<%= typeof post !== 'undefined' ? post.title : '' %>">
         <input type="text" name="tags" placeholder="Add tags, comma separated" value="<%= typeof post !== 'undefined' ? post.tags.join(', ') : '' %>">
         <textarea name="content" placeholder="Write your heart desires..."><%= typeof post !== 'undefined' ? post.content : '' %></textarea>
+        <input type="hidden" name="bannerUrl" id="bannerUrlInput" value="<%= typeof post !== 'undefined' && post.bannerUrl ? post.bannerUrl : '' %>"/>
     </form>
+    
 </div>
 
+<script src="/js/write-blog.js"></script>
 <%- include('partials/footer') %>

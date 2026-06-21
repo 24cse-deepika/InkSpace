@@ -1,0 +1,15 @@
+<%- include('partials/header') %>
+
+<div class="create-banner-container main-content">
+  <h2>Create Banner</h2>
+  <div class="search-bar">
+    <input type="text" id="categoryInput" placeholder="Search photo category (e.g., Tech, Nature)" />
+    <button class="btn" onclick="searchPhotos()">Search</button>
+  </div>
+  <div id="photo-grid" class="photo-grid"></div>
+  <button id="confirmBtn" class="btn" onclick="confirmSelection()" style="display:none;">Use this photo</button>
+</div>
+
+<script src="/js/create-banner.js"></script>
+
+<%- include('partials/footer') %>

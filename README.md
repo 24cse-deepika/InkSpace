@@ -2,7 +2,7 @@
 
 InkSpace is a lightweight blogging platform where users can write, edit, publish, and manage blog posts through a clean, distraction-free interface. Built as a capstone project using **Node.js**, **Express.js**, and **EJS**, with custom CSS styling for a responsive experience across desktop and mobile.
 
-> ⚠️ **Note:** This version stores posts in memory only. All posts are reset when the server restarts — no database is used.
+> 📝 Posts are persisted to a local `posts.json` file and survive server restarts. No external database is required.
 
 ## Features
 
@@ -12,6 +12,7 @@ InkSpace is a lightweight blogging platform where users can write, edit, publish
 - **Delete Posts** — Remove posts you no longer want, with a confirmation prompt.
 - **Drafts & Published** — Save a post as a draft or publish it immediately; manage both from the "My Work" page.
 - **Responsive Design** — A clean, two-column layout with a fixed sidebar that adapts to smaller screens.
+- **Cover Photo** — Search and select a banner photo from Pexels by category before publishing.
 
 ## Tech Stack
 
@@ -19,6 +20,9 @@ InkSpace is a lightweight blogging platform where users can write, edit, publish
 - **Express.js** — Web server and routing
 - **EJS** — Templating engine for dynamic HTML
 - **CSS** — Custom styling (no frameworks)
+- **Axios** — HTTP client for server-side API requests
+- **Pexels API** — Public photo search API for cover images
+- **dotenv** — Environment variable management
 
 ## Project Structure
 
@@ -26,17 +30,24 @@ InkSpace is a lightweight blogging platform where users can write, edit, publish
 InkSpace/
 ├── index.js                  # Express server & routes
 ├── package.json
+├── posts.json                # JSON file store for post persistence
+├── nodemon.json              # Nodemon config
+├── .env                      # API keys (not committed)
 ├── public/
+│   ├── js/
+│   │   ├── write-blog.js     # Banner preview & form logic
+│   │   └── create-banner.js  # Photo search & selection
 │   └── styles/
 │       └── main.css          # Application styling
 └── views/
-    ├── index.ejs              # Home page (published posts)
-    ├── write-blog.ejs         # Create / edit post form
-    ├── my-work.ejs            # Manage drafts & published posts
-    ├── post.ejs                # Single post view
+    ├── index.ejs             # Home page (published posts)
+    ├── write-blog.ejs        # Create / edit post form
+    ├── my-work.ejs           # Manage drafts & published posts
+    ├── post.ejs              # Single post view
+    ├── create-banner.ejs     # Pexels photo search page
     └── partials/
-        ├── header.ejs          # Shared header & navigation
-        └── footer.ejs          # Shared footer & scripts
+        ├── header.ejs        # Shared header & navigation
+        └── footer.ejs        # Shared footer & scripts
 ```
 
 ## Getting Started
@@ -55,12 +66,18 @@ InkSpace/
    ```
 
 3. Start the server:
-
-   ```bash
+```bash
    node index.js
-   ```
+   # or with auto-reload
+   nodemon index.js
+```
 
 4. Open your browser and go to:
+```
+   http://localhost:3000
+```
+
+5. Open your browser and go to:
 
    ```
    http://localhost:3000
@@ -88,10 +105,12 @@ InkSpace/
 | GET | `/edit/:id` | Render edit form for a post |
 | POST | `/edit/:id` | Update an existing post |
 | POST | `/delete/:id` | Delete a post |
+| GET  | /create-banner     | Photo search UI via Pexels       |
+| GET  | /api/photos        | Pexels API proxy endpoint        |
 
 ## Future Improvements
 
-- Persist posts using a database (e.g., MongoDB, PostgreSQL, or SQLite)
+- Migrate from JSON file store to PostgreSQL
 - User authentication for multiple authors
 - Search and filtering by tags
 - Rich text / Markdown support for post content

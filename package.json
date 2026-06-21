@@ -1,20 +1,25 @@
 {
   "dependencies": {
+    "axios": "^1.18.0",
+    "dotenv": "^17.4.2",
     "ejs": "^6.0.1",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "pexels": "^1.4.0"
   },
   "name": "inkspace",
   "version": "1.0.0",
   "description": "InkSpace is a lightweight blogging platform where users can write, edit, and manage posts through a clean and distraction-free interface. Built using Node.js, Express.js, EJS, and CSS.",
   "main": "index.js",
   "type": "module",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/24cse-deepika/InkSpace.git"
+  },
+  "nodemonConfig": {
+    "ignore": ["posts.json"]
   },
   "keywords": [],
   "author": "",
